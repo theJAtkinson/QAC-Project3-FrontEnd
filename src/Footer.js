@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Button, Nav, Navbar, Container, Form, FormControl, footer, Card, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -19,9 +20,7 @@ function foot() {
                         <Nav.Link href="aboutUS">About Us</Nav.Link>
                         <Nav.Link href="contact">Contact Us</Nav.Link>
                         <Nav.Link href="directions">Directions</Nav.Link>
-                        <Nav.Link href="openingTimes">
-                            Opening Times
-                        </Nav.Link>
+                        <Link className="nav-link" to="/openingTimes">Opening Times</Link>
                     </Nav>
                 </Col>
 
@@ -32,7 +31,7 @@ function foot() {
                         <Nav.Link href="classifications">Classifications</Nav.Link>
                         <Nav.Link href="discussionBoard">Discussion Board</Nav.Link>
                         <Nav.Link href="places">Places to go</Nav.Link>
-                        <Nav.Link href="#"> </Nav.Link>
+                        <Nav.Link href="#">Platinum badge </Nav.Link>
                     </Nav>
                 </Col>
 
