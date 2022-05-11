@@ -27,7 +27,7 @@ function header() {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-light dark">Search</Button>
+              <Button variant="outline-light dark">🔍</Button>
             </Form>
 
 

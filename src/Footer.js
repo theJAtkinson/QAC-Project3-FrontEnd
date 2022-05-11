@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 import { Button, Nav, Navbar, Container, Form, FormControl, footer, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
