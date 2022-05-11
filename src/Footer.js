@@ -27,7 +27,7 @@ function foot() {
 
                 <Col xs={9} >
                     <Nav className="flex-column" >
-                        <Nav.Link href="classifications">Classifications</Nav.Link>
+                        <Link className="nav-link" to="/classifications">Classifications</Link>
                         <Nav.Link href="discussionBoard">Discussion Board</Nav.Link>
                         <Nav.Link href="places">Places to go</Nav.Link>
                         <Nav.Link href="#">Platinum badge </Nav.Link>
