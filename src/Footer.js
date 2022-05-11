@@ -16,7 +16,7 @@ function foot() {
                 <Col xs="auto"></Col>
                 <Col xs={2}>
                     <Nav className="flex-column">
-                        <Nav.Link href="aboutUS">About Us</Nav.Link>
+                        <Link className="nav-link" to="/aboutUs">About Us</Link>
                         <Nav.Link href="contact">Contact Us</Nav.Link>
                         <Nav.Link href="directions">Directions</Nav.Link>
                         <Link className="nav-link" to="/openingTimes">Opening Times</Link>
