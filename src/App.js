@@ -7,6 +7,7 @@ import OpeningTimes from './OpeningTimes';
 import Classifications from './Classifications';
 import AboutUs from './AboutUs';
 import Buffer from './Buffer'
+import ContactUs from './ContactUs'
 
 const App = () => {
     return (
@@ -17,7 +18,7 @@ const App = () => {
                 <Route path="/openingTimes" element={<OpeningTimes />} />
                 <Route path="/classifications" element={<Classifications/>} />
                 <Route path="/aboutUs" element={<AboutUs/>} />
-
+                <Route path="/contactUs" element={<ContactUs/>} />
             </Routes>
             <Buffer />
             <Footer />
