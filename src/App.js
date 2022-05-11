@@ -9,6 +9,7 @@ import AboutUs from './AboutUs';
 import Buffer from './Buffer'
 import Directions from './Directions'
 import ContactUs from './ContactUs'
+import PlacesToGo from './PlacesToGo'
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
                 <Route path="/aboutUs" element={<AboutUs/>} />
                 <Route path="/directions" element={<Directions/>} />
                 <Route path="/contactUs" element={<ContactUs/>} />
+                <Route path="/placesToGo" element={<PlacesToGo/>} />
             </Routes>
             <Buffer />
             <Footer />
