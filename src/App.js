@@ -8,6 +8,8 @@ import Classifications from './Classifications';
 import AboutUs from './AboutUs';
 import Buffer from './Buffer'
 import Directions from './Directions'
+import ContactUs from './ContactUs'
+
 
 const App = () => {
     return (
@@ -19,6 +21,7 @@ const App = () => {
                 <Route path="/classifications" element={<Classifications/>} />
                 <Route path="/aboutUs" element={<AboutUs/>} />
                 <Route path="/directions" element={<Directions/>} />
+                <Route path="/contactUs" element={<ContactUs/>} />
             </Routes>
             <Buffer />
             <Footer />
