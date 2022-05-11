@@ -5,6 +5,7 @@ import HomePage from './HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import OpeningTimes from './OpeningTimes';
 import Classifications from './Classifications';
+import Bookings from './Bookings';
 import Buffer from './Buffer'
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/openingTimes" element={<OpeningTimes />} />
                 <Route path="/Classifications" element={<Classifications/>} />
+                <Route path="/Bookings" element={<Bookings/>}/>
             </Routes>
             <Buffer />
             <Footer />
