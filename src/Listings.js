@@ -27,7 +27,7 @@ export default class Listings extends React.Component {
 
                         <Col xs={6}  >
                             <div>
-                            <Link className="nav-link" to="/img1"> <Image src={img} width="250px" height="250px"/></Link>
+                            <a href={img}> <Image src={img} width="250px" height="250px"/> </a>
                             <br />
                             {movie_name} <br />
                             {actors} <br />
