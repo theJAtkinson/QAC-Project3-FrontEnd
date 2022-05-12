@@ -1,127 +1,189 @@
-import React, { Component } from 'react'
-import { Table, Container } from 'react-bootstrap';
-import { renderMatches } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Container, Button, Form, FormGroup, FormLabel, Dropdown,} from 'react-bootstrap';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import {DayPicker} from "react-day-picker";
+import 'react-day-picker/dist/style.css';
 import './App.css';
 import './index.css';
 import axios from 'axios';
 
-class Bookings extends Component {
-constructor(){
-    super();
-    this.state = {
-        movies:[],
-        show_dates: [],
-        show_times: [],
-        screenings: [],
-        fullname: "",
-        email: "",
-        no_adult: "",
-        no_child: "",
-        no_concession: "",
-        screening_id: ""
+
+
+
+function Bookings(){
+    // Lists from api
+    const [movies, setMovies] = useState([]);
+    const [screenings, setScreenings] = useState([]);
+
+    // Created List
+    const [screeningDates, setScreeningDates] = useState([]);
+
+    // Selected varibles
+    const [movie_name, setMovieName] = useState('Please Select a Movie');
+    const [show_date, setShowDate] = useState(new Date());
+    const [fullname, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [no_adult, setAdult] = useState("");
+    const [no_child, setChild] = useState("");
+    const [no_concession, setConcession] = useState("");
+    const [screening_id, setScreeningId] = useState("");
+
+    // Element Hiding
+    const [daySelector, setDaySelector] = useState('hidden');
+    const [bookingForm, setBookingForm] = useState('hidden');
+
+    // Counters
+    const [i,setI] = useState(1);
+
+    // Rehides all hidden features
+    function reset(){
+        setDaySelector('hidden');
+        setBookingForm('hidden');
     }
-    this.handleChangeFullName = this.handleChangeFullName.bind(this)
-    this.handleChangeEmail = this.handleChangeEmail.bind(this)
-    this.handleChangeAdult = this.handleChangeAdult.bind(this)
-    this.handleChangeChild = this.handleChangeChild.bind(this)
-    this.handleChangeConcession = this.handleChangeConcession.bind(this)
 
-}
-
-handleChangeFullName(event){
-    this.setState({
-        fullname: event.target.value
-    })
-}
-
-handleChangeEmail(event){
-    this.setState({
-        email: event.target.value
-    })
-}
-
-handleChangeAdult(event){
-    this.setState({
-        no_adult: event.target.value
-    })
-}
-
-handleChangeChild(event){
-    this.setState({
-        no_child: event.target.value
-    })
-}
-
-handleChangeConcession(event){
-    this.setState({
-        no_concession: event.target.value
-    })
-}
-
-async getMovies(){
-    let res = await axios.get("http://localhost:4005/movie/read")
-    console.log("processed")
-    this.setState({
-        movies: res.data
-    })
-}
-
-async submitBooking(){
-    let res = await axios.post("http://localhost:4005/booking/create",{
-        "fullname": this.state.fullname,
-        "email": this.state.email,
-        "no_adult": this.state.no_adult,
-        "no_child": this.state.no_child,
-        "no_concession": this.state.no_concession,
-        "screening_id": 6
-    })
-}
-
-    render() {
-
-        return (
-
-            <div>
-                <Container>
-                    <h3 style={{ color: "white" }}>Select A Film From The List Below:</h3>
-                    <select name="movies" id="entertainment" onClick={() => this.getMovies()}>
-                        {this.state.movies.map((movie)=>{
-                            return(
-                                <option value={movie.movie_name}>{movie.movie_name}</option>
-                            )
-                        })}
-                    </select>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <h4 style={{ color: "white" }}>Select A Date and Time For Screening:</h4>
-                    <input type="datetime-local" id="info" name="show_time"/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <legend style={{color:"white"}}>Enter Your Booking Information</legend>
-                        <form style={{color:"white"}}>
-                            <label for="fname">Full Name:</label>
-                            <input type="text" value={this.state.fullname} onChange={this.handleChangeFullName} id="fname" name="fname"></input><br/>
-                            <label for="email">Email Address:</label>
-                            <input type="text" value={this.state.email} onChange={this.handleChangeEmail} id="email" name="email"></input><br/>
-                            <label for="a_tickets">No. of Adult Tickets:</label>
-                            <input type="number" value={this.state.no_adult} onChange={this.handleChangeAdult} id="tix" name="tickets"></input><br/>
-                            <label for="children">No. of Children</label>
-                            <input type="number" value={this.state.no_child} onChange={this.handleChangeChild} id="n_kids" name="children"></input><br/>
-                            <label for="concessions">No. of Concessions:</label>
-                            <input type="number" value={this.state.no_concession} onChange={this.handleChangeConcession} id="c_ticket" name="concessions"></input><br/>
-                            <select name="concession types" id="conctype">
-                                <option value="Student">Student</option>
-                                <option value="Over 60s">Over 60</option>
-                                <option value="Disabled">Disabled</option>
-                            </select>
-                        </form>
-                        <button onClick={()=> this.submitBooking()}>Submit</button>
-                </Container>
-            </div>
-
-        )
+    // Extracts date information from every screening and creates new list of just dates.
+    function mapDates(){
+        setScreeningDates(screenings.map((screening) => {
+            return screening.show_date;
+        }));
     }
+
+    // API call for movies
+    async function getMovies(num){
+        // Checks if getMovies has run before from first menu selection
+        if (num == 1) {
+            if(num !== i){
+                return;
+            }
+            if(i !== 2){
+                setI(2);
+            }
+        }
+        let res = await axios.get("http://localhost:4005/movie/read");
+        setMovies(res.data);
+    }
+
+    // API call for list of screenings by movie_name, Also runs map dates so the date is useful.
+    async function getScreenings(title){
+        let res = await axios.get(`http://localhost:4005/movie/read/screening/${title}`);
+        console.log(res.data);
+        setScreenings(res.data);
+        mapDates();
+        setMovieName(title);
+    }
+
+    // Submits booking to API
+    async function submitBooking(){
+        let res = await axios.post("http://localhost:4005/booking/create",{
+            "fullname": fullname,
+            "email": email,
+            "no_adult": no_adult,
+            "no_child": no_child,
+            "no_concession": no_concession,
+            "screening_id": 6
+        })
+    }
+
+    return (
+        <div>
+            <Container>
+                {/* Movie Selection */}
+                <h3 style={{ color: "white" }}>Select A Film From The List Below:</h3>
+
+                <DropdownButton onClick={() => getMovies(1)} title={movie_name}>
+                {movies.map((movie)=>{
+                    return(
+                        <Dropdown.Item as="button"><div 
+                            onClick={(async () => {
+                                await getScreenings(movie.movie_name);
+                            }
+                        )}  
+                        >{movie.movie_name}</div></Dropdown.Item>
+                    )
+                })}
+                </DropdownButton>
+                <Button onClick={async () => {
+                    /* Checks a selection has been made */
+                    if(movie_name !== 'Please Select a Movie'){
+                        mapDates();
+                        setDaySelector("");
+                    }
+                }}>Show Dates</Button>
+
+                {/* Date Selection */}
+                <div hidden={daySelector}>
+                    <DayPicker
+                        mode="single"
+                        required
+                        selected={show_date}
+                        disabled={day => {
+                            /* Checks if day is in the past */
+                            if(day < new Date()){
+                                return true
+                            }
+                            /* Checks if day is not inside list */
+                            let check = day.toISOString()
+                            if(!screeningDates.includes(check)){
+                                return true
+                            }
+                            /* Otherwise show date :) */
+                            return false
+                        }}
+                        onSelect={setShowDate}
+                        showOutsideDays
+                    /> 
+                    <br/><br/>
+                    <Button onClick={async () => {}}>Show Times</Button>
+                    <br/><br/>
+                    <Button onClick={() => {
+                        setBookingForm("");
+                    }}>Show booking form</Button>
+                </div>  
+
+                {/* Form for creation of booking */}
+                <div hidden={bookingForm}>
+                    <Form>
+                        <FormGroup>
+                            <FormLabel style={{ color: "white" }}>Full Name:</FormLabel>
+                            <Form.Control name="nameField" required onChange={(event) => setName(event.target.value)} value={fullname}/>
+                            <Form.Control.Feedback type="invalid">
+                                Please enter your full name.
+                            </Form.Control.Feedback>
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel style={{color: "white"}}>Email:</FormLabel>
+                            <Form.Control name="emailField" required onChange={(event) => setEmail(event.target.value)} value={email}/>
+                            <Form.Control.Feedback type="invalid">
+                                Please enter your email address.
+                            </Form.Control.Feedback>
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel style={{ color: "white" }}>Adult tickets:</FormLabel>
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setAdult(event.target.value)} value={no_adult} />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter number of adult tickets
+                            </Form.Control.Feedback>
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel style={{ color: "white" }}>Child tickets:</FormLabel>
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setChild(event.target.value)} value={no_child} />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter number of child tickets
+                            </Form.Control.Feedback>
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel style={{ color: "white" }}>Child tickets:</FormLabel>
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setConcession(event.target.value)} value={no_concession} />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter number of concession tickets
+                            </Form.Control.Feedback>
+                        </FormGroup>
+                    </Form>
+                </div>
+                <br/>
+                <Button onClick={reset}>Reset</Button>
+            </Container>
+        </div>
+    )
 }
 export default Bookings;
