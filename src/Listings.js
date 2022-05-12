@@ -1,6 +1,8 @@
 import React from 'react'
 import { Container, Form, Button, Row, Col, Image } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 export default class Listings extends React.Component {
     constructor() {
@@ -25,7 +27,8 @@ export default class Listings extends React.Component {
 
                         <Col xs={6}  >
                             <div>
-                            <Image src={img} width="250px" height="250px"/> <br />
+                            <Link className="nav-link" to="/img1"> <Image src={img} width="250px" height="250px"/></Link>
+                            <br />
                             {movie_name} <br />
                             {actors} <br />
                             {director} <br />
