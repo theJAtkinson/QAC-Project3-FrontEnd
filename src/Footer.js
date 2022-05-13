@@ -16,9 +16,9 @@ function foot() {
                 <Col xs="auto"></Col>
                 <Col xs={2}>
                     <Nav className="flex-column">
-                        <Nav.Link href="aboutUS">About Us</Nav.Link>
-                        <Nav.Link href="contact">Contact Us</Nav.Link>
-                        <Nav.Link href="directions">Directions</Nav.Link>
+                        <Link className="nav-link" to="/aboutUs">About Us</Link>
+                        <Link className="nav-link" to="/contactUs">Contact Us</Link>
+                        <Link className="nav-link" to="/directions">Directions</Link>
                         <Link className="nav-link" to="/openingTimes">Opening Times</Link>
                     </Nav>
                 </Col>
@@ -29,7 +29,7 @@ function foot() {
                     <Nav className="flex-column" >
                         <Link className="nav-link" to="/classifications">Classifications</Link>
                         <Nav.Link href="discussionBoard">Discussion Board</Nav.Link>
-                        <Nav.Link href="places">Places to go</Nav.Link>
+                        <Link className="nav-link" to="/placesToGo">Places To Go</Link>
                         <Nav.Link href="#">Platinum badge </Nav.Link>
                     </Nav>
                 </Col>
