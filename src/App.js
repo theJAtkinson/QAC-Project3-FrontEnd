@@ -11,6 +11,7 @@ import Buffer from './Buffer'
 import Directions from './Directions'
 import ContactUs from './ContactUs'
 import PlacesToGo from './PlacesToGo'
+import DiscussionBoard from './DiscussionBoard'
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path="/directions" element={<Directions/>} />
                 <Route path="/contactUs" element={<ContactUs/>} />
                 <Route path="/placesToGo" element={<PlacesToGo/>} />
+                <Route path="/discussionBoard" element={<DiscussionBoard/>} />
             </Routes>
             <Buffer />
             <Footer />
