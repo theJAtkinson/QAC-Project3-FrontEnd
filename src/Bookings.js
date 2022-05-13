@@ -23,11 +23,12 @@ function Bookings() {
     const [movie_name, setMovieName] = useState('Please Select a Movie');
     const [show_time, setShowTime] = useState("Please Select A Time");
     const [show_date, setShowDate] = useState(new Date());
-    const [fullname, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [fullname, setName] = useState();
+    const [email, setEmail] = useState();
     const [no_adult, setAdult] = useState("0");
     const [no_child, setChild] = useState("0");
     const [no_concession, setConcession] = useState("0");
+    const [requestStatus, setRequestStatus] = useState("")
 
     // Element Hiding
     const [daySelector, setDaySelector] = useState('hidden');
@@ -89,6 +90,7 @@ function Bookings() {
             "no_concession": no_concession,
             "screening_id": chosen_screening.screening_id
         })
+        setRequestStatus("Booking Submitted")
     }
 
     return (
@@ -175,14 +177,10 @@ function Bookings() {
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Full Name:</Form.Label>
                             <Form.Control name="nameField" type="text" onChange={(event) => setName(event.target.value)} value={fullname} placeholder="John Smith" required />
-                            <Form.Control.Feedback type="invalid">
-                                Please enter your full name.
-                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Email:</Form.Label>
                             <Form.Control name="emailField" type="email" onChange={(event) => setEmail(event.target.value)} value={email} placeholder="JohnSmith@wobble.com" required />
-
                         </Form.Group>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Adult tickets:</Form.Label>
@@ -190,14 +188,15 @@ function Bookings() {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Child tickets:</Form.Label>
-                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setChild(event.target.value)} value={no_child} required/>
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setChild(event.target.value)} value={no_child} required />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label style={{ color: "white" }}>Child tickets:</Form.Label>
-                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setConcession(event.target.value)} value={no_concession} required/>
+                            <Form.Label style={{ color: "white" }}>Concession tickets:</Form.Label>
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setConcession(event.target.value)} value={no_concession} required />
                         </Form.Group>
                         <Button type="submit">Submit</Button>
                     </Form>
+                    <p> {requestStatus}</p>
                 </div>
             </Container>
         </div >
