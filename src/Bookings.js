@@ -17,9 +17,11 @@ function Bookings(){
 
     // Created List
     const [screeningDates, setScreeningDates] = useState([]);
+    // const [timings, setTimings] = useState([]);
 
     // Selected varibles
     const [movie_name, setMovieName] = useState('Please Select a Movie');
+    const [show_time, setShowTime] = useState("Please Select A Time");
     const [show_date, setShowDate] = useState(new Date());
     const [fullname, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -61,6 +63,12 @@ function Bookings(){
         }
         let res = await axios.get("http://localhost:4005/movie/read");
         setMovies(res.data);
+    }
+
+    function getTimes(){
+        let timings = screenings.filter((screening)=>screening.show_date==show_date.toISOString());
+        return(timings)
+        console.log(timings)
     }
 
     // API call for list of screenings by movie_name, Also runs map dates so the date is useful.
@@ -131,15 +139,25 @@ function Bookings(){
                         }}
                         onSelect={setShowDate}
                         showOutsideDays
-                    /> 
+                    />
                     <br/><br/>
-                    <Button onClick={async () => {}}>Show Times</Button>
-                    <br/><br/>
-                    <Button onClick={() => {
+                {/* Timing selector */}
+                <DropdownButton title={show_time}>
+                {getTimes().map((times)=>{
+                    return(
+                        <Dropdown.Item as="button"><div 
+                            onClick={(() => {
+                                setShowTime(times.show_time)
+                            }
+                        )}  
+                        >{times.show_time}</div></Dropdown.Item>
+                    )
+                })}
+                </DropdownButton>
+                <Button onClick={() => {
                         setBookingForm("");
                     }}>Show booking form</Button>
                 </div>  
-
                 {/* Form for creation of booking */}
                 <div hidden={bookingForm}>
                     <Form>
