@@ -122,7 +122,7 @@ function Bookings() {
                 </DropdownButton>
 
                 {/* Date Selection */}
-                <div style={{ "background-color": "white" }} hidden={daySelector}>
+                <div hidden={daySelector}>
                     <DayPicker
                         mode="single"
                         required
