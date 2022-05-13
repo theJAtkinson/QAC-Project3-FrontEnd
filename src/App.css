@@ -25,3 +25,17 @@
 }
 
 
+.imageContainer {
+
+  display: block;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.left{
+  position: absolute;
+  font-size: 70px;
+  top: 25px;
+  left: 16px;
+}
