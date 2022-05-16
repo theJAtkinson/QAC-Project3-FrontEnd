@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Form, Button, Row, Col, Image } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import SingleContent from './SingleContent';
 
 
 export default class Listings extends React.Component {
