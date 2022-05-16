@@ -1,40 +1,42 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Button, Nav, Navbar, Container, Form, FormControl } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Button, Form, FormControl } from 'react-bootstrap';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const Search = () => {
 
-    const [searchText, setSearchText] = React.useState('');
-    const [movies, setMovies] = React.useState([]);
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
-    async function getMovies() {
-        let res = await axios.get("http://localhost:4005/movie/read");
-        setMovies(res.data);
-    }
+  async function doSearch(err) {
+    err.preventDefault();
+    console.log("I think searchText is: " + searchText);
 
-    useEffect(() => {
-        
-       getMovies()
-    }, []);
+    let res = await axios.get(`http://localhost:4005/movie/searchMovie/${searchText}`)
 
-    return (
+    console.log(res.data);
+    navigate(`/SearchResult/${res.data[0].id}`)
 
-        <div>
-            <Form className="d-flex">
-              <FormControl
-                type="text"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Link className="nav-link" to="/SearchResult"><Button>Search</Button></Link>
-            </Form>
+  }
 
-            
-        </div>
-    )
+  return (
+
+    <div>
+      <Form onSubmit={doSearch} className="d-flex">
+        <FormControl
+          onChange={(event) => {
+            setSearchText(event.target.value)
+          }}
+          type="text"
+          placeholder="Search"
+          className="me-2"
+          value={searchText}
+        />
+        <Button type="submit">Search</Button>
+      </Form>
+    </div>
+  )
 
 
 }
