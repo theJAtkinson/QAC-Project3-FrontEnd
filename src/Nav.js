@@ -19,8 +19,9 @@ function header() {
             <Nav className="me-auto">
 
 
-              <Nav.Link href="./newreleases">New Releases</Nav.Link>
+           
               <Link className="nav-link" to="/Listings">Listings</Link>
+              <Nav.Link href="./newReleases">New Releases</Nav.Link>
               <Nav.Link href="./Screens">Screens</Nav.Link>
               <Nav.Link href="./Bookings">Books Tickets</Nav.Link>
 

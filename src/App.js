@@ -16,6 +16,7 @@ import Listings from './Listings'
 import Movies from './Search'
 import DiscussionBoard from './DiscussionBoard'
 import Screens from './Screens'
+import NewReleases from './NewReleases'
 
 const App = () => {
     return (
@@ -35,6 +36,8 @@ const App = () => {
                 <Route path="/movies/:id" element={<Movies />} />
                 <Route path="/discussionBoard" element={<DiscussionBoard/>} />
                 <Route path="/Screens" element={<Screens/>} />
+                <Route path="/newReleases" element={<NewReleases/>} />
+
             </Routes>
             <Buffer />
             <Footer />
