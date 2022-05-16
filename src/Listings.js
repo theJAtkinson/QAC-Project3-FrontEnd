@@ -1,50 +1,37 @@
-import React from 'react'
-import { Container, Form, Button, Row, Col, Image } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import SingleContent from './SingleContent';
+import "./Listings.css";
+import Search from './Search'
 
-
-export default class Listings extends React.Component {
-    constructor() {
-        super();
-        this.state = { movies: [] }
-    }
-
-    componentDidMount() {
-        axios.get("http://localhost:4005/movie/read")
-            .then((response) => { this.setState({ movies: response.data }) })
-    }
-
-    render() {
-
-
-        return (
-            <Container>
-                <h1>Listings</h1>
-                <Row > {this.state.movies.map(({ movie_name, actors, director, img, classification }) => {
-
-                    return (
-
-                        <Col xs={6}  >
-                            <div>
-                            <Link className="nav-link" to="/img1"> <Image src={img} width="250px" height="250px"/></Link>
-                            <br />
-                            {movie_name} <br />
-                            {actors} <br />
-                            {director} <br />
-                            {classification} <br />
-                            <br />
-                            </div>
-                        </Col>)
-
-                })
-                }
+const Listings = () => {
+    const [movies, setMovies] = React.useState([]);
 
 
 
-                </Row>
 
-            </Container>
-        )
-    }
+
+    React.useEffect(() => {
+        axios.get("http://localhost:4005/movie/read").then((response) => {
+            setMovies(response.data);
+            console.log(movies)
+        });
+    }, []);
+
+
+
+    return (
+
+
+        <div>
+
+            <h1>Movie Listing</h1>
+            <div className="listing">
+                {movies && movies.map((c) => <SingleContent key={c.id} movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />)}
+            </div>
+        </div>
+
+    );
 }
+
+export default Listings;

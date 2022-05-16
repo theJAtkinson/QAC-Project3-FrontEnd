@@ -11,6 +11,7 @@ import Directions from './Directions'
 import ContactUs from './ContactUs'
 import PlacesToGo from './PlacesToGo'
 import Listings from './Listings'
+import Movies from './Search'
 
 
 const App = () => {
@@ -20,12 +21,13 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/openingTimes" element={<OpeningTimes />} />
-                <Route path="/classifications" element={<Classifications/>} />
-                <Route path="/aboutUs" element={<AboutUs/>} />
-                <Route path="/directions" element={<Directions/>} />
-                <Route path="/contactUs" element={<ContactUs/>} />
-                <Route path="/placesToGo" element={<PlacesToGo/>} />
-                <Route path="/Listings" element={<Listings/>} />
+                <Route path="/classifications" element={<Classifications />} />
+                <Route path="/aboutUs" element={<AboutUs />} />
+                <Route path="/directions" element={<Directions />} />
+                <Route path="/contactUs" element={<ContactUs />} />
+                <Route path="/placesToGo" element={<PlacesToGo />} />
+                <Route path="/Listings" element={<Listings />} />
+
             </Routes>
             <Buffer />
             <Footer />
