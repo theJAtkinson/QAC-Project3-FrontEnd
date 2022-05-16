@@ -19,6 +19,8 @@ export default class Homepage extends React.Component {
     }
 
     render() {
+        return (
+
                 <div className= "imageContainer">
                  
                      <h1 className="left"> <b>WATCH LATEST MOVIES</b></h1>
@@ -49,7 +51,6 @@ export default class Homepage extends React.Component {
                 </Container>
     
             </div>
-    );
-    
+        )
 }
 }
