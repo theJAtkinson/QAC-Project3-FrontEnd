@@ -13,14 +13,17 @@ function header() {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">QA Cinema</Navbar.Brand>
+          <Navbar.Brand href="/">QA Cinema</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
+
+
+              <Nav.Link href="./newreleases">New Releases</Nav.Link>
               <Link className="nav-link" to="/Listings">Listings</Link>
-              <Nav.Link href="#newReleases">New Releases</Nav.Link>
               <Nav.Link href="./Screens">Screens</Nav.Link>
               <Nav.Link href="./Bookings">Books Tickets</Nav.Link>
+
             </Nav>
             <Form className="d-flex">
               <FormControl
