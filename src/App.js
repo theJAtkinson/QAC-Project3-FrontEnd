@@ -13,6 +13,7 @@ import PlacesToGo from './PlacesToGo'
 import Movies from './Movies';
 
 
+
 const App = () => {
     return (
         <Router>
