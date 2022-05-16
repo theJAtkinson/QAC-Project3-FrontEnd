@@ -4,8 +4,10 @@ import SingleContent from './SingleContent';
 import "./Listings.css";
 import Search from './Search'
 
+
 const Listings = () => {
     const [movies, setMovies] = React.useState([]);
+
 
 
 
