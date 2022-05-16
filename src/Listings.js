@@ -23,16 +23,14 @@ const Listings = () => {
 
 
     return (
-
-
         <div>
 
             <h1>Movie Listing</h1>
             <div className="listing">
-                {movies && movies.map((c) => <SingleContent key={c.id} movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />)}
+                {movies && movies.map((c) => 
+                <SingleContent key={c.id} movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />)}
             </div>
         </div>
-
     );
 }
 
