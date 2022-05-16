@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button, NavItem } from 'react-bootstrap';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { Container, Row, Col, Form, Button, } from 'react-bootstrap';
 import axios from 'axios';
-
 
 function DiscussionBoard() {
 
@@ -18,7 +16,7 @@ function DiscussionBoard() {
     const [postForm, setPostForm] = useState("hidden");
 
 
-    function populate(){
+    function populate() {
         axios.get("http://localhost:4005/post/read")
             .then((res) => {
                 setPosts(res.data);
@@ -29,6 +27,7 @@ function DiscussionBoard() {
                 setMovies(res.data);
             })
     }
+    
     useEffect(() => {
         populate();
     }, []);
@@ -41,9 +40,9 @@ function DiscussionBoard() {
         return output;
     }
 
-    function getMovieId(movie_name){
-        for(let i =0; i<=movies.length; i++){
-            if(movies[i].movie_name == movie_name){
+    function getMovieId(movie_name) {
+        for (let i = 0; i <= movies.length; i++) {
+            if (movies[i].movie_name == movie_name) {
                 return movies[i].id;
             }
         }
@@ -51,22 +50,31 @@ function DiscussionBoard() {
 
     function submitPost(err) {
         err.preventDefault();
-        axios.post("http://localhost:4005/post/create",{
-            movie_id : getMovieId(movie),
-            title : subject,
+        axios.post("http://localhost:4005/post/create", {
+            movie_id: getMovieId(movie),
+            title: subject,
             body: review,
-            rating : rating,
-            fullname : name
+            rating: rating,
+            fullname: name
         })
+            .then((res) => {
+                console.log(res.data);
+                populate();
+            })
+    }
+
+    function deletePost(postId){
+        axios.delete(`http://localhost:4005/post/delete/${postId}`)
         .then((res) => {
             console.log(res.data);
             populate();
         })
     }
 
+
     return (
         <div>
-            <Container>
+            <Container >
                 <h1>Discussion Board</h1>
                 <br />
                 <h2>Posts</h2>
@@ -74,27 +82,31 @@ function DiscussionBoard() {
                 <Row>
                     {posts.map((post) => {
                         return (
-                            <Col xs={4} border="primary">
-                                <h3><b>{post.title}</b></h3>
-                                <p>
-                                    &nbsp;&nbsp;<h4>{post.movie_name}<br /></h4>
-                                    &nbsp;&nbsp;{ratingify(post.rating)}
-                                </p>
-                                <p>
-                                    "{post.body}"
-                                </p>
-                                <h6>-<i>{post.fullname}</i></h6>
-                                <br />
-                                <br />
+                            <Col xs={4}>
+                                <div>
 
+                                    <h3><b>{post.title}</b></h3>
+                                    <p>
+                                        &nbsp;&nbsp;<h4>{post.movie_name}<br /></h4>
+                                        &nbsp;&nbsp;{ratingify(post.rating)}
+                                    </p>
+                                    <p>
+                                        "{post.body}"
+                                    </p>
+                                    <h6>-<i>{post.fullname}</i></h6>
+                                    <Button onClick={() => deletePost(post.id)} style={{ "font-size": "small" }} variant="outline-light dark">Delete</Button>
+                                    <br />
+                                    <br />
+
+                                </div>
                             </Col>
                         )
                     })}
                 </Row>
             </Container>
 
-            <Container>
-                <Button onClick={() => setPostForm("")}>Add Review</Button>
+            <Container >
+                <Button onClick={() => setPostForm("")} variant="outline-light dark">Add Review</Button>
                 <div hidden={postForm}>
                     <Form onSubmit={submitPost}>
                         <Form.Group>
