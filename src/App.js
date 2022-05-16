@@ -11,7 +11,10 @@ import Buffer from './Buffer'
 import Directions from './Directions'
 import ContactUs from './ContactUs'
 import PlacesToGo from './PlacesToGo'
+import Listings from './Listings'
+import Movies from './Search'
 import DiscussionBoard from './DiscussionBoard'
+
 
 
 const App = () => {
@@ -21,6 +24,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/openingTimes" element={<OpeningTimes />} />
+                <Route path="/Listings" element={<Listings />} />
                 <Route path="/Classifications" element={<Classifications/>} />
                 <Route path="/Bookings" element={<Bookings/>}/>
                 <Route path="/classifications" element={<Classifications/>} />
