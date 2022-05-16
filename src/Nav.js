@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Button, Nav, Navbar, Container, Form, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -15,10 +17,13 @@ function header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#listings">Listings</Nav.Link>
+
+
               <Nav.Link href="./newreleases">New Releases</Nav.Link>
-              <Nav.Link href="#screens">Screens</Nav.Link>
-              <Nav.Link href="#bookTickets">Books Tickets</Nav.Link>
+              <Link className="nav-link" to="/Listings">Listings</Link>
+              <Nav.Link href="./Screens">Screens</Nav.Link>
+              <Nav.Link href="./Bookings">Books Tickets</Nav.Link>
+
             </Nav>
             <Form className="d-flex">
               <FormControl

@@ -1,0 +1,16 @@
+.listing{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+}
+
+.searchOne{
+
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.search{
+    justify-content: flex-end;
+    color:black;
+}
