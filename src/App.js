@@ -12,6 +12,7 @@ import Directions from './Directions'
 import ContactUs from './ContactUs'
 import PlacesToGo from './PlacesToGo'
 import DiscussionBoard from './DiscussionBoard'
+import Screens from './Screens'
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/contactUs" element={<ContactUs/>} />
                 <Route path="/placesToGo" element={<PlacesToGo/>} />
                 <Route path="/discussionBoard" element={<DiscussionBoard/>} />
+                <Route path="/Screens" element={<Screens/>} />
             </Routes>
             <Buffer />
             <Footer />
