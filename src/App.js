@@ -37,7 +37,6 @@ const App = () => {
                 <Route path="/discussionBoard" element={<DiscussionBoard/>} />
                 <Route path="/Screens" element={<Screens/>} />
                 <Route path="/newReleases" element={<NewReleases/>} />
-                <Route path="/movies/:id" element={<Movies/>} />
 
             </Routes>
             <Buffer />
