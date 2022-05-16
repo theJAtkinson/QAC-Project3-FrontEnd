@@ -20,7 +20,7 @@ function header() {
               <Link className="nav-link" to="/Listings">Listings</Link>
               <Nav.Link href="#newReleases">New Releases</Nav.Link>
               <Nav.Link href="#screens">Screens</Nav.Link>
-              <Nav.Link href="#bookTickets">Books Tickets</Nav.Link>
+              <Nav.Link href="./Bookings">Books Tickets</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl
