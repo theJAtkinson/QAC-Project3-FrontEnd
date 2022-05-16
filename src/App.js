@@ -14,6 +14,7 @@ import PlacesToGo from './PlacesToGo'
 import Listings from './Listings'
 import Movies from './Search'
 import DiscussionBoard from './DiscussionBoard'
+import SearchResult from "./SearchResult"
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/contactUs" element={<ContactUs/>} />
                 <Route path="/placesToGo" element={<PlacesToGo/>} />
                 <Route path="/discussionBoard" element={<DiscussionBoard/>} />
+                <Route path="/SearchResult/:id" element={<SearchResult/>} />
             </Routes>
             <Buffer />
             <Footer />
