@@ -25,7 +25,7 @@ const App = () => {
                 <Route path="/directions" element={<Directions/>} />
                 <Route path="/contactUs" element={<ContactUs/>} />
                 <Route path="/placesToGo" element={<PlacesToGo/>} />
-                <Route path="/movies/:id" element={<Movies/>} />
+                <Route path="/movies/:id" element={<Movies />} />
             </Routes>
             <Buffer />
             <Footer />
