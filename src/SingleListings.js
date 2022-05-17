@@ -3,31 +3,31 @@ import axios from 'axios';
 import SingleContent from './SingleContent';
 import "./Listings.css";
 import { Container, Row, Col } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 
-const Listings = () => {
+const SingleListings = () => {
     const [movies, setMovies] = useState([]);
-    const navigate = useNavigate();
-
+    const {movieId} = useParams();
 
     useEffect(() => {
-        axios.get("http://localhost:4005/movie/read").then((response) => {
-            setMovies(response.data);
+        axios.get(`http://localhost:4005/movie/read/${movieId}`)
+        .then((response) => {
+            setMovies(response.data[0]); 
         });
     }, []);
 
     return (
         <div>
             <Container>
-                <h1>Movie Listing</h1>
+                <h1>Movie</h1>
                 <Row className="listing">
-                    {movies && movies.map((c) => <Col onClick={()=>{navigate(`/SingleListings/${c.id}`)}} xs={4}><SingleContent key={c.id} {...c}/></Col>)}
+                    <Col> <SingleContent {...movies} /></Col>
                 </Row>
             </Container>
         </div>
     );
 }
 
-export default Listings;
+export default SingleListings;
 

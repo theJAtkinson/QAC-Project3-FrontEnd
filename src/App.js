@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './Footer';
 import HomePage from './HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import OpeningTimes from './OpeningTimes';
 import Classifications from './Classifications';
 import Bookings from './Bookings';
@@ -15,11 +16,17 @@ import Movie from './Movies';
 import Listings from './Listings'
 import Movies from './Search'
 import DiscussionBoard from './DiscussionBoard'
+import SearchResult from "./SearchResult"
 import Screens from './Screens'
 import NewReleases from './NewReleases'
+import SingleListings from './SingleListings'
 
 const App = () => {
     return (
+       <PayPalScriptProvider options={{
+            "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+            "currency": "GBP"
+            }}>
         <Router>
             <Nav />
             <Routes>
@@ -33,15 +40,16 @@ const App = () => {
                 <Route path="/directions" element={<Directions/>} />
                 <Route path="/contactUs" element={<ContactUs/>} />
                 <Route path="/placesToGo" element={<PlacesToGo/>} />
-                <Route path="/movies/:id" element={<Movie />} />
                 <Route path="/discussionBoard" element={<DiscussionBoard/>} />
+                <Route path="/SearchResult/:searchable" element={<SearchResult/>} />
+                <Route path="/SingleListings/:movieId" element={<SingleListings/>} />
                 <Route path="/Screens" element={<Screens/>} />
                 <Route path="/newReleases" element={<NewReleases/>} />
-
             </Routes>
             <Buffer />
             <Footer />
         </Router>
+      </PayPalScriptProvider>
     );
 }
 
