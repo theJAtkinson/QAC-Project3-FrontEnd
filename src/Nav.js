@@ -20,9 +20,9 @@ function header() {
 
            
               <Link className="nav-link" to="/Listings">Listings</Link>
-              <Nav.Link href="./newReleases">New Releases</Nav.Link>
-              <Nav.Link href="./Screens">Screens</Nav.Link>
-              <Nav.Link href="./Bookings">Books Tickets</Nav.Link>
+              <Link className="nav-link" to="/newReleases">New Releases</Link>
+              <Link className="nav-link" to="/Screens">Screens</Link>
+              <Link className="nav-link" to="/Bookings">Books Tickets</Link>
 
             </Nav>
             <Search/>
