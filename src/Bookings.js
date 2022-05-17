@@ -37,9 +37,22 @@ function Bookings() {
     const [daySelector, setDaySelector] = useState('hidden');
     const [bookingForm, setBookingForm] = useState('hidden');
 
+    function displayAdultTicket(){
+        return no_adult == 0 ? "" : no_adult + ` Adult ticket${no_adult == 1 ? "" : "s"}`;
+    }
+
+    function displayChildTicket(){
+        return no_child == 0 ? "" : no_child + ` Child ticket${no_child == 1 ? "" : "s"}`;
+    }
+
+    function displayConcessionTicket(){
+        return no_concession == 0 ? "" : no_concession + ` Concession ticket${no_concession == 1 ? "" : "s"}`;
+    }
+
+
     function orderProduct(){
         let product = {
-            "description": `${no_adult == 0 ? "" : no_adult + ` Adult ticket${no_adult == 1 ? ", " : "s, "}`}${no_child == 0 ? "" : no_child + ` Child ticket${no_child == 1 ? ", " : "s, "}`}${no_concession == 0 ? "" : no_concession + ` Concession ticket${no_concession == 1 ? "" : "s"}`}`,
+            "description": `${displayAdultTicket()} ${displayChildTicket()} ${displayConcessionTicket()}`,
             "price": (ADULT_PRICE*no_adult) + (CHILD_PRICE*no_child) + (CONCESSION_PRICE*no_concession)
         }
         return product;
@@ -187,15 +200,15 @@ function Bookings() {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Adult tickets £{ADULT_PRICE}:</Form.Label>
-                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setAdult(event.target.value)} value={no_adult} required />
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => {setAdult(event.target.value); setCheckOut(false)}} value={no_adult} required />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Child tickets £{CHILD_PRICE}:</Form.Label>
-                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setChild(event.target.value)} value={no_child} required />
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => {setChild(event.target.value); setCheckOut(false)}} value={no_child} required />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Concession tickets £{CONCESSION_PRICE}:</Form.Label>
-                            <Form.Control type="Number" min={0} max={30} onChange={(event) => setConcession(event.target.value)} value={no_concession} required />
+                            <Form.Control type="Number" min={0} max={30} onChange={(event) => {setConcession(event.target.value); setCheckOut(false)}} value={no_concession} required />
                         </Form.Group>
                         <br/>
                         <Button type="submit">Submit</Button>
@@ -203,8 +216,13 @@ function Bookings() {
                     {checkOut === true &&
                         <div>
                             <br/>
-                            <h4>{tickets.description} for: <br/>
-                            ------- £{tickets.price} -------</h4>
+                            <h5>
+                                {no_adult !== 0 && <div>{displayAdultTicket()}<br/></div>}
+                                {no_child !== 0 && <div>{displayChildTicket()}<br/></div>}
+                                {no_concession !== 0 && <div>{displayConcessionTicket()}<br/></div>}
+                                ------ Total ------ <br/>
+                                ------- £{tickets.price} -------
+                            </h5>
                             <br/>
                             <div className="paypal-button-container">
                                 <PayPalCheckoutButton product={tickets}/>
@@ -212,7 +230,9 @@ function Bookings() {
                         </div>
                     }
                 </div>
-                <br /><br />
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </Container>
         </div >
     )
