@@ -79,3 +79,23 @@ body {
 .container {
   flex:1;
 }
+
+
+
+/* .carousel-item Image {
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  height: auto;
+  width:640px;s
+  height:360px;
+} */
+/* .carousel-item Image {
+width: 640px;
+height:360px;
+} */
+
+.carousel {
+  margin: auto;
+  justify-content: center;
+}

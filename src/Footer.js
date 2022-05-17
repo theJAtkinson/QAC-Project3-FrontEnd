@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 function foot() {
     return (
         <body>
-        <div class ="container"></div>
+        <div className ="container"></div>
         <footer>
-            <div class= "columns">
-            <div class= "column">
+            <div className= "columns">
+            <div className= "column">
             <ul>
             <li><a href="/aboutUs">About Us</a></li>
             <li><a href="/contactUs">Contact Us</a></li>
@@ -20,7 +20,7 @@ function foot() {
             <li><a href="/openingTimes">Opening Times</a></li>
             </ul>
             </div>
-            <div class= "column">
+            <div className= "column">
             <ul>
             <li><a href="/classifications">Classifications</a></li>
             <li><a href="/discussionBoard">Discussion Board</a></li>
