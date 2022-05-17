@@ -19,6 +19,7 @@ import DiscussionBoard from './DiscussionBoard'
 import SearchResult from "./SearchResult"
 import Screens from './Screens'
 import NewReleases from './NewReleases'
+import SingleListings from './SingleListings'
 
 const App = () => {
     return (
@@ -41,6 +42,7 @@ const App = () => {
                 <Route path="/placesToGo" element={<PlacesToGo/>} />
                 <Route path="/discussionBoard" element={<DiscussionBoard/>} />
                 <Route path="/SearchResult/:searchable" element={<SearchResult/>} />
+                <Route path="/SingleListings/:movieId" element={<SingleListings/>} />
                 <Route path="/Screens" element={<Screens/>} />
                 <Route path="/newReleases" element={<NewReleases/>} />
             </Routes>

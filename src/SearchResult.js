@@ -9,33 +9,30 @@ function SearchResult() {
 
     const { searchable } = useParams();
     const [results, setResults] = useState([]);
-    const [emptyResult, setEmptyResult] = useState('hidden')
+
 
     useEffect(() => {
         axios.get(`http://localhost:4005/movie/searchMovie/${searchable}`)
             .then((res) => {
-                console.log(res.data);
-                if (res.data.length == 0) {
-                    setEmptyResult("")
-                } else {
-                    setResults(res.data)
-                }
-
+                setResults(res.data)
             })
-    }, []);
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [searchable]);
 
     return (
         <div>
             <Container>
                 <h1>Search Results</h1>
-                <p hidden={emptyResult}>No results found for <i>'{searchable}'</i></p>
+                {results.length === 0 && <p> No results found for <i>'{searchable}'</i></p>}
 
-                <Row  className="listing">
+                <Row className="listing">
                     {results.map((c) => {
                         console.log(c);
                         return (
                             <Col xs={4}>
-                                <SingleContent movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />
+                                <SingleContent {...c} />
                             </Col>
                         )
                     })}
