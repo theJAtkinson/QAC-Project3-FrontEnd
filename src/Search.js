@@ -12,12 +12,7 @@ const Search = () => {
   async function doSearch(err) {
     err.preventDefault();
     console.log("I think searchText is: " + searchText);
-
-    let res = await axios.get(`http://localhost:4005/movie/searchMovie/${searchText}`)
-
-    console.log(res.data);
-    navigate(`/SearchResult/${res.data[0].id}`)
-
+    navigate(`/SearchResult/${searchText}`)
   }
 
   return (
