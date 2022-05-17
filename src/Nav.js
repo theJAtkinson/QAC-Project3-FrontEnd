@@ -2,9 +2,8 @@ import './App.css';
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Button, Nav, Navbar, Container, Form, FormControl } from 'react-bootstrap';
+import Search from './Search'
 import { Link } from 'react-router-dom';
-
-
 
 
 function header() {
@@ -26,15 +25,7 @@ function header() {
               <Nav.Link href="./Bookings">Books Tickets</Nav.Link>
 
             </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-light dark">🔍</Button>
-            </Form>
+            <Search/>
 
 
           </Navbar.Collapse>
