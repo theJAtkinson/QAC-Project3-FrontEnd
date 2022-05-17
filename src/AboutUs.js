@@ -1,9 +1,7 @@
 import React from 'react'
-import './App.css';
-import './index.css';
 import LinkedInLogo from './images/LinkedInLogo.png';
 import GithubLogo from './images/GithubLogo.png';
-import { Table, Container, Image, Row, Col } from 'react-bootstrap';
+import { Container, Image, Row, Col } from 'react-bootstrap';
 
 
 const aboutUs = () =>
@@ -66,18 +64,9 @@ const aboutUs = () =>
             <br />
 
             <h5>
-                QA Cinema is part of QA International - one of the world's leading cinema operators, managing the most respected brands in major European markets and Taiwan, spanning ten countries, over 280 sites and over 2,400 screens.</h5>
-
-
-
-
-
-
-
+                QA Cinema is part of QA International - one of the world's leading cinema operators, managing the most respected brands in major European markets and Taiwan, spanning ten countries, over 280 sites and over 2,400 screens.
+            </h5>
         </Container>
-
-
-
     </div>;
 
 export default aboutUs;

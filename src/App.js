@@ -12,27 +12,32 @@ import Directions from './Directions'
 import ContactUs from './ContactUs'
 import PlacesToGo from './PlacesToGo'
 import DiscussionBoard from './DiscussionBoard'
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 
 const App = () => {
     return (
-        <Router>
-            <Nav />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/openingTimes" element={<OpeningTimes />} />
-                <Route path="/Classifications" element={<Classifications/>} />
-                <Route path="/Bookings" element={<Bookings/>}/>
-                <Route path="/classifications" element={<Classifications/>} />
-                <Route path="/aboutUs" element={<AboutUs/>} />
-                <Route path="/directions" element={<Directions/>} />
-                <Route path="/contactUs" element={<ContactUs/>} />
-                <Route path="/placesToGo" element={<PlacesToGo/>} />
-                <Route path="/discussionBoard" element={<DiscussionBoard/>} />
-            </Routes>
-            <Buffer />
-            <Footer />
-        </Router>
+        <PayPalScriptProvider option={{
+            "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+            "currency": "GBP"
+            }}>
+            <Router>
+                <Nav />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/openingTimes" element={<OpeningTimes />} />
+                    <Route path="/Classifications" element={<Classifications/>} />
+                    <Route path="/Bookings" element={<Bookings/>}/>
+                    <Route path="/classifications" element={<Classifications/>} />
+                    <Route path="/aboutUs" element={<AboutUs/>} />
+                    <Route path="/directions" element={<Directions/>} />
+                    <Route path="/contactUs" element={<ContactUs/>} />
+                    <Route path="/placesToGo" element={<PlacesToGo/>} />
+                    <Route path="/discussionBoard" element={<DiscussionBoard/>} />
+                </Routes>
+                <Buffer />
+                <Footer />
+            </Router>
+        </PayPalScriptProvider>
     );
 }
 
