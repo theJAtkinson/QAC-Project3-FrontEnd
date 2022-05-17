@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import SingleContent from './SingleContent';
 import "./Listings.css";
 
-
 const NewReleases = () => {
     const [newMovies, setNewMovies] = React.useState([]);
 
@@ -23,8 +22,7 @@ const NewReleases = () => {
 
             <h1>New Releases</h1>
             <div className="listing">
-
-                {newMovies.filter((b) => (b.id == 1 || b.id == 4 || b.id == 5 || b.id == 6)).map((c) => <SingleContent key={c.id} movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />)} 
+                {newMovies.filter((b) => (b.id == 1 || b.id == 4 || b.id == 5 || b.id == 6)).map((c) => <SingleContent key={c.id} id={c.id} movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />)} 
             </div>
         </div>
 

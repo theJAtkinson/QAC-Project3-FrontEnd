@@ -7,11 +7,8 @@ import { Link } from 'react-router-dom';
 
 function foot() {
     return (
-
-
-
-        <Navbar fixed="bottom" bg="dark" variant="dark">
-            <Container fluid>
+        <Navbar bg="dark" variant="dark">
+            <Container display="flex">
 
                 <Col xs="auto"></Col>
                 <Col xs={2}>

@@ -29,7 +29,6 @@ export default class Homepage extends React.Component {
                     <Container>
                  <h2>Whats On</h2>
                 <Row > {this.state.movies.map(({ id, movie_name, actors, director, img, classification }) => {
-
                     return (
                         <Col xs={4}  >
                             <div>
