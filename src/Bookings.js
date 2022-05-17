@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Button, Form, Dropdown, } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import axios from 'axios';
+import PayPalCheckoutButton from './components/PayPalCheckoutButton.js'
 import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
-import './App.css';
-import './index.css';
-import axios from 'axios';
-
-
-
 
 function Bookings() {
+    const ADULT_PRICE = 15;
+    const CHILD_PRICE = 8;
+    const CONCESSION_PRICE = 10;
+
     // Lists from api
     const [movies, setMovies] = useState([]);
     const [screenings, setScreenings] = useState([]);
@@ -23,19 +23,27 @@ function Bookings() {
     const [movie_name, setMovieName] = useState('Please Select a Movie');
     const [show_time, setShowTime] = useState("Please Select A Time");
     const [show_date, setShowDate] = useState(new Date());
-    const [fullname, setName] = useState();
-    const [email, setEmail] = useState();
+    const [fullname, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [no_adult, setAdult] = useState("0");
     const [no_child, setChild] = useState("0");
     const [no_concession, setConcession] = useState("0");
-    const [requestStatus, setRequestStatus] = useState("")
+
+    // for Paypal
+    const [checkOut, setCheckOut] = useState(false);
+    const [tickets, setTickets] = useState([]);
 
     // Element Hiding
     const [daySelector, setDaySelector] = useState('hidden');
     const [bookingForm, setBookingForm] = useState('hidden');
 
-    // Counters
-    const [i, setI] = useState(1);
+    function orderProduct(){
+        let product = {
+            "description": `${no_adult === 0 ? "" : no_adult + ` Adult ticket${no_adult === 1 ? ", " : "s, "}`}${no_child === 0 ? "" : no_child + ` Child ticket${no_child === 1 ? ", " : "s, "}`}${no_concession === 0 ? "" : no_concession + ` Concession ticket${no_concession === 1 ? "" : "s"}`}`,
+            "price": (ADULT_PRICE*no_adult) + (CHILD_PRICE*no_child) + (CONCESSION_PRICE*no_concession)
+        }
+        return product;
+    }
 
     // Rehides all hidden features
     function reset() {
@@ -50,24 +58,20 @@ function Bookings() {
         }));
     }
 
+    useEffect(()=> {
+        getMovies()
+    }, []);
+
     // API call for movies
-    async function getMovies(num) {
-        // Checks if getMovies has run before from first menu selection
-        if (num == 1) {
-            if (num !== i) {
-                return;
-            }
-            if (i !== 2) {
-                setI(2);
-            }
-        }
+    async function getMovies() {
         let res = await axios.get("http://localhost:4005/movie/read");
         setMovies(res.data);
     }
 
+    // Returns a list of timings for the chosen film name
     function getTimes() {
-        let timings = screenings.filter((screening) => screening.show_date == show_date.toISOString());
-        timings = timings.length != 0 ? timings : [{ "show_time": "Please Select A Date" }]
+        let timings = screenings.filter((screening) => screening.show_date === show_date.toISOString());
+        timings = timings.length !== 0 ? timings : [{ "show_time": "Please Select A Date" }]
         return timings
     }
 
@@ -89,8 +93,10 @@ function Bookings() {
             "no_child": no_child,
             "no_concession": no_concession,
             "screening_id": chosen_screening.screening_id
-        })
-        setRequestStatus("Booking Submitted")
+        });
+        setCheckOut(true);
+        setTickets(orderProduct());
+        return res;
     }
 
     return (
@@ -99,23 +105,20 @@ function Bookings() {
                 {/* Movie Selection */}
                 <h3 style={{ color: "white" }}>Select A Film From The List Below:</h3>
 
-                <DropdownButton onClick={() => getMovies(1)} title={movie_name}>
+                <DropdownButton title={movie_name}>
                     {movies.map((movie) => {
                         return (
                             <Dropdown.Item as="button"><div
 
                                 onMouseDown={(() => {
                                     getScreenings(movie.movie_name);
-                                })
-
-                                }
+                                })}
+                                
                                 onClick={(() => {
                                     mapDates();
                                     setDaySelector("");
-                                    setShowTime("Please Select A Time")
-                                }
-                                )}
-
+                                    setShowTime("Please Select A Time");
+                                })}
                             >{movie.movie_name}</div></Dropdown.Item>
                         )
                     })}
@@ -150,7 +153,6 @@ function Bookings() {
                     {/* Timing selector */}
                     <DropdownButton title={show_time}>
                         {getTimes().map((time) => {
-                            //console.log(time);
                             return (
                                 <Dropdown.Item as="button"><div
 
@@ -160,7 +162,7 @@ function Bookings() {
                                     })}
 
                                     onClick={(() => {
-                                        if (!(time.show_time == "Please Select A Date" || time.show_time == "Please Select A Time")) {
+                                        if (!(time.show_time === "Please Select A Date" || time.show_time === "Please Select A Time")) {
                                             setBookingForm("");
                                         }
                                     }
@@ -173,6 +175,7 @@ function Bookings() {
 
                 {/* Form for creation of booking */}
                 <div hidden={bookingForm}>
+                    <br />
                     <Form onSubmit={submitBooking}>
                         <Form.Group>
                             <Form.Label style={{ color: "white" }}>Full Name:</Form.Label>
@@ -183,23 +186,31 @@ function Bookings() {
                             <Form.Control name="emailField" type="email" onChange={(event) => setEmail(event.target.value)} value={email} placeholder="JohnSmith@wobble.com" required />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label style={{ color: "white" }}>Adult tickets:</Form.Label>
+                            <Form.Label style={{ color: "white" }}>Adult tickets £{ADULT_PRICE}:</Form.Label>
                             <Form.Control type="Number" min={0} max={30} onChange={(event) => setAdult(event.target.value)} value={no_adult} required />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label style={{ color: "white" }}>Child tickets:</Form.Label>
+                            <Form.Label style={{ color: "white" }}>Child tickets £{CHILD_PRICE}:</Form.Label>
                             <Form.Control type="Number" min={0} max={30} onChange={(event) => setChild(event.target.value)} value={no_child} required />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label style={{ color: "white" }}>Concession tickets:</Form.Label>
+                            <Form.Label style={{ color: "white" }}>Concession tickets £{CONCESSION_PRICE}:</Form.Label>
                             <Form.Control type="Number" min={0} max={30} onChange={(event) => setConcession(event.target.value)} value={no_concession} required />
                         </Form.Group>
                         <Button type="submit">Submit</Button>
                     </Form>
-                    <p> {requestStatus}</p>
+                    {checkOut === true &&
+                        <div className="paypal-button-container">
+                            <PayPalCheckoutButton product={tickets}/>
+                        </div>
+                    }
                 </div>
+                <br /><br />
             </Container>
         </div >
     )
 }
+
+
+
 export default Bookings;

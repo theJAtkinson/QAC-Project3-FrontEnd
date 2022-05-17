@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './Footer';
 import HomePage from './HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import OpeningTimes from './OpeningTimes';
 import Classifications from './Classifications';
 import Bookings from './Bookings';
@@ -20,28 +21,30 @@ import NewReleases from './NewReleases'
 
 const App = () => {
     return (
-        <Router>
-            <Nav />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/openingTimes" element={<OpeningTimes />} />
-                <Route path="/Listings" element={<Listings />} />
-                <Route path="/Classifications" element={<Classifications/>} />
-                <Route path="/Bookings" element={<Bookings/>}/>
-                <Route path="/classifications" element={<Classifications/>} />
-                <Route path="/aboutUs" element={<AboutUs/>} />
-                <Route path="/directions" element={<Directions/>} />
-                <Route path="/contactUs" element={<ContactUs/>} />
-                <Route path="/placesToGo" element={<PlacesToGo/>} />
-                <Route path="/movies/:id" element={<Movie />} />
-                <Route path="/discussionBoard" element={<DiscussionBoard/>} />
-                <Route path="/Screens" element={<Screens/>} />
-                <Route path="/newReleases" element={<NewReleases/>} />
-
-            </Routes>
-            <Buffer />
-            <Footer />
-        </Router>
+        <PayPalScriptProvider option={{
+            "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+            "currency": "GBP"
+            }}>
+            <Router>
+                <Nav />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/openingTimes" element={<OpeningTimes />} />
+                    <Route path="/Classifications" element={<Classifications/>} />
+                    <Route path="/Bookings" element={<Bookings/>}/>
+                    <Route path="/classifications" element={<Classifications/>} />
+                    <Route path="/aboutUs" element={<AboutUs/>} />
+                    <Route path="/directions" element={<Directions/>} />
+                    <Route path="/contactUs" element={<ContactUs/>} />
+                    <Route path="/placesToGo" element={<PlacesToGo/>} />
+                    <Route path="/discussionBoard" element={<DiscussionBoard/>} />
+                    <Route path="/Screens" element={<Screens/>} />
+                    <Route path="/newReleases" element={<NewReleases/>} />
+                </Routes>
+                <Buffer />
+                <Footer />
+            </Router>
+        </PayPalScriptProvider>
     );
 }
 
