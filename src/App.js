@@ -45,8 +45,10 @@ const App = () => {
                 <Route path="/SingleListings/:movieId" element={<SingleListings/>} />
                 <Route path="/Screens" element={<Screens/>} />
                 <Route path="/newReleases" element={<NewReleases/>} />
+                <Route path="/movies/:id" element={<Movie/>} />
+
             </Routes>
-            <Buffer />
+            
             <Footer />
         </Router>
       </PayPalScriptProvider>

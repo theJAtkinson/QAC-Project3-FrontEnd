@@ -5,10 +5,6 @@ import { Container, Image, Row, Col } from 'react-bootstrap';
 
 
 const SingleContent = ({ id, movie_name, director, actors, classification, img }) => {
-
-
-
-
     return <div className="media">
         <Container>
         <img className="poster" src={img} />

@@ -27,17 +27,14 @@ export default class Homepage extends React.Component {
                     <Image style={{height:"100%", flex:1, width:"100%"}} src={Cinema}  />
 
                     <Container>
-                 <h2>Whats On</h2>
+                        <br/>
+                 <h2>What's On</h2> <br/> 
                 <Row > {this.state.movies.map(({ id, movie_name, actors, director, img, classification }) => {
                     return (
                         <Col xs={4}  >
                             <div>
                             <Link className="nav-link" to={"/movies/"+id}> <Image src={img} width="250px" height="250px"/></Link>
-                            <br />
-                            {movie_name} <br />
-                            {actors} <br />
-                            {director} <br />
-                            {classification} <br />
+                           
                             <br />
                             </div>
                         </Col>)

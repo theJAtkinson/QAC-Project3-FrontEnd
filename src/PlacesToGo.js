@@ -13,7 +13,7 @@ const PlacesToGo = () =>
                     <Image src={"https://www.spccs1.co.uk/ImageAssets/810f1b9e4e57469db31ae08183bebbe4.JPG"} />
                     <br />
                     <br />
-                    <h3><a href="https://www.slugandlettuce.co.uk/towerbridge">
+                    <h3><a href="https://www.slugandlettuce.co.uk/towerbridge" target="_blank">
                         <Button variant="outline-light dark">
                             Slug and Lettuce - Tower Bridge
                         </Button>
@@ -29,7 +29,7 @@ const PlacesToGo = () =>
                     <Image src={"https://dynl.mktgcdn.com/p/ixY-R7NtkmZtfimKtcemlWWyZ0JINTrsjqkHLyBTyjs/450x450.jpg"} />
                     <br />
                     <br />
-                    <h3><a href="https://www.wagamama.com/restaurants/london/tower-hill">
+                    <h3><a href="https://www.wagamama.com/restaurants/london/tower-hill" target="_blank">
                         <Button variant="outline-light dark">
                             Wagamama - Tower Hill
                         </Button>
@@ -46,7 +46,7 @@ const PlacesToGo = () =>
                     <Image src={"https://hrp.imgix.net/https%3A%2F%2Fhistoricroyalpalaces.picturepark.com%2FGo%2FA1PyYFjx%2FV%2F51644%2F1?auto=format&s=4a7295c05958c3fd0afaf8f0937d77e6"} width="150%" />
                     <br />
                     <br />
-                    <h3><a href="https://www.hrp.org.uk/tower-of-london/">
+                    <h3><a href="https://www.hrp.org.uk/tower-of-london/" >
                         <Button variant="outline-light dark">
                             The Tower of London
                         </Button>

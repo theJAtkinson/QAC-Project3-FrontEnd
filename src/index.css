@@ -1,7 +1,7 @@
 
 html,body {
   background-color: rgb(28, 27, 27);
-  height: 100%;
+  /* min-height: 40%; */
 }
 
 body {

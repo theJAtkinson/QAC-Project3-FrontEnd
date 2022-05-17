@@ -19,7 +19,6 @@ useEffect( () => {
 
 return (
     <div>
-    
     {movie.filter(a => a.id == params.id).map((c) => <SingleContent key={c.id} movie_name={c.movie_name} director={c.director} actors={c.actors} classification={c.classification} img={c.img} />)}
     </div>
 )
