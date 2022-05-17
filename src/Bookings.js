@@ -39,7 +39,7 @@ function Bookings() {
 
     function orderProduct(){
         let product = {
-            "description": `${no_adult === 0 ? "" : no_adult + ` Adult ticket${no_adult === 1 ? ", " : "s, "}`}${no_child === 0 ? "" : no_child + ` Child ticket${no_child === 1 ? ", " : "s, "}`}${no_concession === 0 ? "" : no_concession + ` Concession ticket${no_concession === 1 ? "" : "s"}`}`,
+            "description": `${no_adult == 0 ? "" : no_adult + ` Adult ticket${no_adult == 1 ? ", " : "s, "}`}${no_child == 0 ? "" : no_child + ` Child ticket${no_child == 1 ? ", " : "s, "}`}${no_concession == 0 ? "" : no_concession + ` Concession ticket${no_concession == 1 ? "" : "s"}`}`,
             "price": (ADULT_PRICE*no_adult) + (CHILD_PRICE*no_child) + (CONCESSION_PRICE*no_concession)
         }
         return product;
@@ -197,11 +197,18 @@ function Bookings() {
                             <Form.Label style={{ color: "white" }}>Concession tickets £{CONCESSION_PRICE}:</Form.Label>
                             <Form.Control type="Number" min={0} max={30} onChange={(event) => setConcession(event.target.value)} value={no_concession} required />
                         </Form.Group>
+                        <br/>
                         <Button type="submit">Submit</Button>
                     </Form>
                     {checkOut === true &&
-                        <div className="paypal-button-container">
-                            <PayPalCheckoutButton product={tickets}/>
+                        <div>
+                            <br/>
+                            <h4>{tickets.description} for: <br/>
+                            ------- £{tickets.price} -------</h4>
+                            <br/>
+                            <div className="paypal-button-container">
+                                <PayPalCheckoutButton product={tickets}/>
+                            </div>
                         </div>
                     }
                 </div>
