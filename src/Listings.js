@@ -23,8 +23,8 @@ const Listings = () => {
                 </Row>
             </Container>
         </div>
-
     );
 }
 
 export default Listings;
+
