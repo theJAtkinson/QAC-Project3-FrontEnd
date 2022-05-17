@@ -217,9 +217,9 @@ function Bookings() {
                         <div>
                             <br/>
                             <h5>
-                                {no_adult !== 0 && <div>{displayAdultTicket()}<br/></div>}
-                                {no_child !== 0 && <div>{displayChildTicket()}<br/></div>}
-                                {no_concession !== 0 && <div>{displayConcessionTicket()}<br/></div>}
+                                {no_adult != 0 && <div>{displayAdultTicket()}<br/></div>}
+                                {no_child != 0 && <div>{displayChildTicket()}<br/></div>}
+                                {no_concession != 0 && <div>{displayConcessionTicket()}<br/></div>}
                                 ------ Total ------ <br/>
                                 ------- £{tickets.price} -------
                             </h5>
