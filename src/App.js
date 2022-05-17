@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './Footer';
 import HomePage from './HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import OpeningTimes from './OpeningTimes';
 import Classifications from './Classifications';
 import Bookings from './Bookings';
@@ -11,8 +12,12 @@ import Buffer from './Buffer'
 import Directions from './Directions'
 import ContactUs from './ContactUs'
 import PlacesToGo from './PlacesToGo'
+import Movie from './Movies';
+import Listings from './Listings'
+import Movies from './Search'
 import DiscussionBoard from './DiscussionBoard'
-import { PayPalScriptProvider } from "@paypal/react-paypal-js"
+import Screens from './Screens'
+import NewReleases from './NewReleases'
 
 const App = () => {
     return (
@@ -33,6 +38,8 @@ const App = () => {
                     <Route path="/contactUs" element={<ContactUs/>} />
                     <Route path="/placesToGo" element={<PlacesToGo/>} />
                     <Route path="/discussionBoard" element={<DiscussionBoard/>} />
+                    <Route path="/Screens" element={<Screens/>} />
+                    <Route path="/newReleases" element={<NewReleases/>} />
                 </Routes>
                 <Buffer />
                 <Footer />
