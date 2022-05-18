@@ -27,11 +27,10 @@ export default class Homepage extends React.Component {
     render() {
         return (
            
-
          <div>
             <Container fluid>
                 <Row className="carousel">
-                    <Col xs={10}>
+                    <Col xs={8}>
                         
         <Carousel>
             {this.renderCarousel()}
