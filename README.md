@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# QA Final Group Project 
+
+This project involves concepts from all core training modules:
+*	Agile & Project Management
+* Databases & Cloud Fundamentals
+*	Programming & Testing Fundamentals
+*	Front-End Development
+*	Automated Testing
+*	Full-Stack Development Technologies
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Planning
+#### Jira
+
+
+
 
 ## Available Scripts
 
