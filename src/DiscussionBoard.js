@@ -60,6 +60,11 @@ function DiscussionBoard() {
             .then((res) => {
                 console.log(res.data);
                 populate();
+                setName("")
+                setRating("")
+                setMovie("")
+                setSubject("")
+                setReview("")
             })
     }
 

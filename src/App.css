@@ -43,6 +43,14 @@
 
 /* ====Footer====  */
 
+
+.flex-wrapper {
+  display:flex;
+  min-height: 90vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .columns {
   width: 750px;
   display:flex;
@@ -71,16 +79,12 @@ footer a:hover {
   padding: 0 35px;;
 }
 
-body {
-  display:flex;
-  min-height: 90vh;
-  flex-direction: column;
-}
-
 .container {
   flex:1;
 }
 
+
+/* ================== */
 
 
 /* .carousel-item Image {
@@ -100,9 +104,6 @@ body {
   max-height:100%;
   background-size: contain;
 
- 
-  
-
 }
 
 .carousel {
@@ -115,11 +116,5 @@ body {
   width: 100%;  */
 }
 
-.slider {
-  /* width:auto;
-  height:100%;
-  flex: 1, */
-  
-}
 
 
