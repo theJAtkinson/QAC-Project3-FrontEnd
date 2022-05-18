@@ -21,16 +21,16 @@ export default class Homepage extends React.Component {
 
     renderCarousel = () => {
         const {movies} = this.state;
-        return movies.map(movie => <Carousel.Item className="carousel-item" ><img width={350} height={450} alt= "350x450"className="d-block w-100" src={movie.img} /></Carousel.Item>)
+        return movies.map(movie => <Carousel.Item className="carousel-item" ><img width={350} height={450} alt= "350x450"className="d-block w-100 object-cover h-full w-full rounded-md" src={movie.img} /></Carousel.Item>)
     }
 
     render() {
         return (
            
-         <div>
+         <div className="slider">
             <Container fluid>
                 <Row className="carousel">
-                    <Col xs={8}>
+                    <Col xs={12}>
                         
         <Carousel>
             {this.renderCarousel()}
