@@ -39,3 +39,62 @@
   top: 25px;
   left: 16px;
 }
+
+/* ====Footer====  */
+
+.columns {
+  width: 750px;
+  display:flex;
+  padding: 10px 0;
+}
+
+ul {
+  list-style:none;
+  padding-left:20;
+
+}
+footer {
+  background-color: #212529;
+  line-height: 2;
+
+}
+footer a {
+  text-decoration: none;
+  color: white;
+}
+footer a:hover {
+  color: 	grey;
+}
+
+.column {
+  padding: 0 35px;;
+}
+
+body {
+  display:flex;
+  min-height: 90vh;
+  flex-direction: column;
+}
+
+.container {
+  flex:1;
+}
+
+
+
+/* .carousel-item Image {
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  height: auto;
+  width:640px;s
+  height:360px;
+} */
+/* .carousel-item Image {
+width: 640px;
+height:360px;
+} */
+
+.carousel {
+  justify-content: center;
+}
