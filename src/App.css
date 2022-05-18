@@ -34,10 +34,11 @@
 }
 
 .left{
-  position: absolute;
+  position: relative;
   font-size: 70px;
-  top: 25px;
-  left: 16px;
+  animation: glow 2s ease-in-out infinite;
+
+                                                                                
 }
 
 /* ====Footer====  */
@@ -91,17 +92,23 @@ body {
   height:360px;
 } */
 .carousel-item img {
-  max-width: 100%;
-  flex:1;
+  object-fit: contain;
+  width: 50px;
+  object-position:center;
+  height: 80vh;
+  max-width:100%;
+  max-height:100%;
+  background-size: contain;
+
  
   
 
 }
 
 .carousel {
-  justify-content: center;
-  object-fit: contain;
-   height: auto;
+  background-size: contain;
+  /* justify-content: center;
+  object-fit: contain; */
   /* perspective: 1000;
   position: relative;
   z-index: 1;
@@ -109,6 +116,10 @@ body {
 }
 
 .slider {
-  width:100%;
+  /* width:auto;
   height:100%;
+  flex: 1, */
+  
 }
+
+
