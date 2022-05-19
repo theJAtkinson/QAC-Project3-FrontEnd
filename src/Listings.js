@@ -3,7 +3,7 @@ import axios from 'axios';
 import SingleContent from './SingleContent';
 import "./Listings.css";
 import { Container, Row, Col } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Listings = () => {

@@ -3,9 +3,6 @@ import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class ContactUs extends React.Component {
-
-
-
     constructor() {
         super()
 
@@ -22,7 +19,6 @@ export default class ContactUs extends React.Component {
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeMessage = this.handleChangeMessage.bind(this);
-
         this.saveData = this.saveData.bind(this);
     }
 
@@ -41,7 +37,6 @@ export default class ContactUs extends React.Component {
     handleChangeMessage(event) {
         this.setState({ message: event.target.value });
     }
-
 
     saveData(err) {
         err.preventDefault();
@@ -67,35 +62,29 @@ export default class ContactUs extends React.Component {
 
     render() {
         return (
-
             <div>
                 <Container>
                     <br />
                     <h1 ><b>Contact Us</b></h1>
                     <Row>
                         <Col xs={5}>
-
                             <Form onSubmit={this.saveData}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Full Name</Form.Label>
                                     <Form.Control as="textarea" value={this.state.fullName} onChange={this.handleChangeFullName} rows={1} required />
                                 </Form.Group>
-
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control type="email" value={this.state.emailAddress} onChange={this.handleChangeEmail} placeholder="name@example.com" />
                                 </Form.Group>
-
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Subject</Form.Label>
                                     <Form.Control as="textarea" value={this.state.title} onChange={this.handleChangeTitle} rows={1} required />
                                 </Form.Group>
-
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Leave Your Message</Form.Label>
                                     <Form.Control as="textarea" value={this.state.message} onChange={this.handleChangeMessage} rows={5} required />
                                 </Form.Group>
-
                                 <Button variant="primary" type="submit">
                                     Submit
                                 </Button>
@@ -115,10 +104,10 @@ export default class ContactUs extends React.Component {
                             <h2> Email: </h2>
                             JordanHarrison@JordanHarrison.com
                         </Col>
-
                     </Row>
                 </Container>
-            </div>)
+            </div>
+        );
     }
 }
 

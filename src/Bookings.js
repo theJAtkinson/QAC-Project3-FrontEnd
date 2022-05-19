@@ -38,17 +38,16 @@ function Bookings() {
     const [bookingForm, setBookingForm] = useState('hidden');
 
     function displayAdultTicket(){
-        return no_adult == 0 ? "" : no_adult + ` Adult ticket${no_adult == 1 ? "" : "s"}`;
+        return no_adult === "0" ? "" : no_adult + ` Adult ticket${no_adult === "1" ? "" : "s"}`;
     }
 
     function displayChildTicket(){
-        return no_child == 0 ? "" : no_child + ` Child ticket${no_child == 1 ? "" : "s"}`;
+        return no_child === "0" ? "" : no_child + ` Child ticket${no_child === "1" ? "" : "s"}`;
     }
 
     function displayConcessionTicket(){
-        return no_concession == 0 ? "" : no_concession + ` Concession ticket${no_concession == 1 ? "" : "s"}`;
+        return no_concession === "0" ? "" : no_concession + ` Concession ticket${no_concession === "1" ? "" : "s"}`;
     }
-
 
     function orderProduct(){
         let product = {
@@ -56,12 +55,6 @@ function Bookings() {
             "price": (ADULT_PRICE*no_adult) + (CHILD_PRICE*no_child) + (CONCESSION_PRICE*no_concession)
         }
         return product;
-    }
-
-    // Rehides all hidden features
-    function reset() {
-        setDaySelector('hidden');
-        setBookingForm('hidden');
     }
 
     // Extracts date information from every screening and creates new list of just dates.
@@ -217,9 +210,9 @@ function Bookings() {
                         <div>
                             <br/>
                             <h5>
-                                {no_adult != 0 && <div>{displayAdultTicket()}<br/></div>}
-                                {no_child != 0 && <div>{displayChildTicket()}<br/></div>}
-                                {no_concession != 0 && <div>{displayConcessionTicket()}<br/></div>}
+                                {no_adult !== "0" && <div>{displayAdultTicket()}<br/></div>}
+                                {no_child !== "0" && <div>{displayChildTicket()}<br/></div>}
+                                {no_concession !== "0" && <div>{displayConcessionTicket()}<br/></div>}
                                 ------ Total ------ <br/>
                                 ------- £{tickets.price} -------
                             </h5>

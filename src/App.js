@@ -3,23 +3,21 @@ import './App.css';
 import Footer from './Footer';
 import HomePage from './HomePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { PayPalScriptProvider } from "@paypal/react-paypal-js"
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OpeningTimes from './OpeningTimes';
 import Classifications from './Classifications';
 import Bookings from './Bookings';
 import AboutUs from './AboutUs';
-import Buffer from './Buffer'
-import Directions from './Directions'
-import ContactUs from './ContactUs'
-import PlacesToGo from './PlacesToGo'
+import Directions from './Directions';
+import ContactUs from './ContactUs';
+import PlacesToGo from './PlacesToGo';
 import Movie from './Movies';
-import Listings from './Listings'
-import Movies from './Search'
-import DiscussionBoard from './DiscussionBoard'
-import SearchResult from "./SearchResult"
-import Screens from './Screens'
-import NewReleases from './NewReleases'
-import SingleListings from './SingleListings'
+import Listings from './Listings';
+import DiscussionBoard from './DiscussionBoard';
+import SearchResult from "./SearchResult";
+import Screens from './Screens';
+import NewReleases from './NewReleases';
+import SingleListings from './SingleListings';
 
 const App = () => {
     return (
@@ -47,8 +45,7 @@ const App = () => {
                 <Route path="/newReleases" element={<NewReleases/>} />
                 <Route path="/movies/:id" element={<Movie/>} />
 
-            </Routes>
-            
+            </Routes>          
             <Footer />
         </Router>
       </PayPalScriptProvider>
