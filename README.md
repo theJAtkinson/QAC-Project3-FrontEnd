@@ -1,3 +1,5 @@
+Coverage: 80.87
+
 # QA Final Group Project 
 
 This project involved concepts from all core training modules:
@@ -28,18 +30,22 @@ The application adheres to the following technological constraints as encountere
 ### ERD 
 ![](Documentation/ERD.png)
 
-
-
 ## Starting the Application 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
-- Clone this repositary 
+- Clone these repositaries
 ```
 git@github.com:theJAtkinson/QAC-Project3-FrontEnd.git
 ```
 ```
 git@github.com:theJAtkinson/QAC-Project3-BackEnd.git
 ```
+
+## Unit Testing 
+### Mocha and Chai 
+
+Test Coverage 
+![](Documentation/test-coverage.png)
 
 ## Available Scripts
 
