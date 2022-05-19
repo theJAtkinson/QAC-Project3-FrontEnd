@@ -15,7 +15,6 @@ const Search = () => {
   }
 
   return (
-
     <div>
       <Form onSubmit={doSearch} className="d-flex">
         <FormControl

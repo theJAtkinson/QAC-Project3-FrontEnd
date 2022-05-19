@@ -19,7 +19,7 @@ export default class Homepage extends React.Component {
     render() { 
         return (
             <div className= "imageContainer">
-                <text className="left">WATCH LATEST MOVIES</text>
+                <text className="left">WATCH LATEST MOVIES</text><br/>
                 <video className = "videoTag" autoPlay loop muted>
                     <source width="50%" src={trailer} type='video/mp4' />
                 </video>

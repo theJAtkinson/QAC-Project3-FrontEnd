@@ -1,8 +1,5 @@
 import React from 'react'
 import { Table, Container } from 'react-bootstrap';
-import './App.css';
-import './index.css';
-
 
 const OpeningTimes = () =>
     <div>

@@ -1,6 +1,4 @@
 import React from 'react'
-import './App.css';
-import './index.css';
 import { Table, Container, Image } from 'react-bootstrap';
 import ImgPG from './images/PG.jpg';
 import Img12A from './images/12A.webp';
