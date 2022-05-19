@@ -1,6 +1,6 @@
 # QA Final Group Project 
 
-This project involves concepts from all core training modules:
+This project involved concepts from all core training modules:
 *	Agile & Project Management
 * Databases & Cloud Fundamentals
 *	Programming & Testing Fundamentals
@@ -10,8 +10,22 @@ This project involves concepts from all core training modules:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Planning
-#### Jira
+The application adheres to the following technological constraints as encountered during the training.
+*	Version Control System - Git
+*	Source Code Management - GitHub
+*	Kanban Board - Jira
+*	Full-Stack Development Technologies: MERN Stack
+*	Database Management System - MySQL
+*	Back-End Programming - Node
+*	API Development Platform - Express
+*	Front-End Development Framework - React
+*	Unit Testing - Mocha, Chai
+
+## Installations
+ Node - https://nodejs.org/en/download/
+
+## Database - mysql 
+
 
 
 
