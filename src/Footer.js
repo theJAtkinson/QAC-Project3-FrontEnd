@@ -3,7 +3,9 @@ import React from 'react'
 function foot() {
     
     return (
-        <div className="flex-wrapper">
+        <body>
+            
+        <div className ="container"></div>
             <footer>
                 <div className= "columns">
                     <div className= "column">
@@ -24,8 +26,8 @@ function foot() {
                     </div>
                 </div>
             </footer>
-        </div>
-        
+            </body>
+    
     );
 }
 

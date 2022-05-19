@@ -83,6 +83,11 @@ footer a:hover {
   flex:1;
 }
 
+body {
+  display:flex;
+  min-height: 90vh;
+  flex-direction: column;
+}
 
 /* ================== */
 
