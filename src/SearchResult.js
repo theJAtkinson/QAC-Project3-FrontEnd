@@ -6,10 +6,8 @@ import SingleContent from './SingleContent';
 import "./Listings.css";
 
 function SearchResult() {
-
     const { searchable } = useParams();
     const [results, setResults] = useState([]);
-
 
     useEffect(() => {
         axios.get(`http://localhost:4005/movie/searchMovie/${searchable}`)
@@ -26,7 +24,6 @@ function SearchResult() {
             <Container>
                 <h1>Search Results</h1>
                 {results.length === 0 && <p> No results found for <i>'{searchable}'</i></p>}
-
                 <Row className="listing">
                     {results.map((c) => {
                         console.log(c);
@@ -39,7 +36,7 @@ function SearchResult() {
                 </Row>
             </Container>
         </div>
-    )
+    );
 }
 
 export default SearchResult;

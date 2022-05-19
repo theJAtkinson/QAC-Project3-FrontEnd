@@ -10,8 +10,6 @@ const aboutUs = () =>
             <br />
             <h1 ><b>About Us</b></h1>
             <br />
-
-
             <Row>
                 <Col xs={3}>
                     Jonah Atikinson
@@ -19,7 +17,6 @@ const aboutUs = () =>
                 <Col xs={1}>
                     <a href=" https://github.com/theJAtkinson/" > <Image src={GithubLogo} width="30px" /></a> <a href="https://www.linkedin.com/in/jonah-atkinson-a0a507225/" ><Image src={LinkedInLogo} width="30px" /> </a>
                 </Col>
-
             </Row>
             <br />
             <Row>
@@ -45,7 +42,7 @@ const aboutUs = () =>
                     Gregory Evans
                 </Col>
                 <Col xs={1}>
-                    <a href=" https://github.com/theJAtkinson/" ><Image src={GithubLogo} width="30px" /></a> <a href="https://www.linkedin.com/in/jonah-atkinson-a0a507225/" ><Image src={LinkedInLogo} width="30px" /></a>
+                    <a href="https://github.com/G-J-Evans" ><Image src={GithubLogo} width="30px" /></a> <a href="https://www.linkedin.com/in/gregory-evans-29414a236/" ><Image src={LinkedInLogo} width="30px" /></a>
                 </Col>
             </Row>
             <br />
@@ -57,12 +54,10 @@ const aboutUs = () =>
                     <a href=" https://github.com/bowku" ><Image src={GithubLogo} width="30px" /></a> <a href="https://www.linkedin.com/in/mohamed-jaleil-6a837b16b/" ><Image src={LinkedInLogo} width="30px" /></a>
                 </Col>
             </Row>
-
             <br />
             <br />
             <br />
             <br />
-
             <h5>
                 QA Cinema is part of QA International - one of the world's leading cinema operators, managing the most respected brands in major European markets and Taiwan, spanning ten countries, over 280 sites and over 2,400 screens.
             </h5>

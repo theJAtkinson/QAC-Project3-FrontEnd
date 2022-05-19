@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Row, Image, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const PlacesToGo = () =>
     <div>
@@ -13,7 +12,7 @@ const PlacesToGo = () =>
                     <Image src={"https://www.spccs1.co.uk/ImageAssets/810f1b9e4e57469db31ae08183bebbe4.JPG"} />
                     <br />
                     <br />
-                    <h3><a href="https://www.slugandlettuce.co.uk/towerbridge" target="_blank">
+                    <h3><a href="https://www.slugandlettuce.co.uk/towerbridge" target="_blank" rel="noreferrer">
                         <Button variant="outline-light dark">
                             Slug and Lettuce - Tower Bridge
                         </Button>
@@ -29,7 +28,7 @@ const PlacesToGo = () =>
                     <Image src={"https://dynl.mktgcdn.com/p/ixY-R7NtkmZtfimKtcemlWWyZ0JINTrsjqkHLyBTyjs/450x450.jpg"} />
                     <br />
                     <br />
-                    <h3><a href="https://www.wagamama.com/restaurants/london/tower-hill" target="_blank">
+                    <h3><a href="https://www.wagamama.com/restaurants/london/tower-hill" target="_blank" rel="noreferrer">
                         <Button variant="outline-light dark">
                             Wagamama - Tower Hill
                         </Button>
@@ -73,9 +72,7 @@ const PlacesToGo = () =>
                     </p>
                 </Col>
             </Row>
-
         </Container>
-
     </div>
 
 export default PlacesToGo;

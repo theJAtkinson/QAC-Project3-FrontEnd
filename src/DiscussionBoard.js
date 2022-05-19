@@ -42,7 +42,7 @@ function DiscussionBoard() {
 
     function getMovieId(movie_name) {
         for (let i = 0; i <= movies.length; i++) {
-            if (movies[i].movie_name == movie_name) {
+            if (movies[i].movie_name === movie_name) {
                 return movies[i].id;
             }
         }
@@ -76,7 +76,6 @@ function DiscussionBoard() {
         })
     }
 
-
     return (
         <div>
             <Container >
@@ -102,14 +101,12 @@ function DiscussionBoard() {
                                     <Button onClick={() => deletePost(post.id)} style={{ "font-size": "small" }} variant="outline-light dark">Delete</Button>
                                     <br />
                                     <br />
-
                                 </div>
                             </Col>
                         )
                     })}
                 </Row>
             </Container>
-
             <Container >
                 <Button onClick={() => setPostForm("")} variant="outline-light dark">Add Review</Button>
                 <div hidden={postForm}>
@@ -125,9 +122,8 @@ function DiscussionBoard() {
                                 {movies.map((movie) => {
                                     return (
                                         <option>{movie.movie_name}</option>
-                                    )
-                                })
-                                }
+                                    );
+                                })}
                             </Form.Select>
                         </Form.Group>
                         <Form.Group>
@@ -146,9 +142,7 @@ function DiscussionBoard() {
                     </Form>
                 </div>
             </Container>
-
         </div >
-
     )
 }
 

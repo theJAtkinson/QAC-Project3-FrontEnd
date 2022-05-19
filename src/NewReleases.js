@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Container, Row, Col, Image } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Container, Col} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import SingleContent from './SingleContent';
 import "./Listings.css";
 
@@ -18,11 +18,11 @@ const NewReleases = () => {
     return (
         <div>
             <Container>
-            <h1>New Releases</h1>
-            <div className="listing">
-                {newMovies.filter((b) => (b.id == 1 || b.id == 4 || b.id == 5 || b.id == 6)).map((c) => <Col onClick={()=>{navigate(`/SingleListings/${c.id}`)}} xs={4}><SingleContent key={c.id} {...c}/></Col>)}
+                <h1>New Releases</h1>
+                <div className="listing">
+                    {newMovies.filter((b) => (b.id === 1 || b.id === 4 || b.id === 5 || b.id === 6)).map((c) => <Col onClick={()=>{navigate(`/SingleListings/${c.id}`)}} xs={4}><SingleContent key={c.id} {...c}/></Col>)}
                 </div>
-                </Container>
+            </Container>
         </div>
 
     );

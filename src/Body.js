@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 function middle() {
     return (
         <div>
@@ -9,9 +7,5 @@ function middle() {
         </div>
     );
 }
-
-
-
-
 
 export default middle;
