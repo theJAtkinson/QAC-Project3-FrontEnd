@@ -4,8 +4,7 @@ function foot() {
     
     return (
         <body>
-            
-        <div className ="container"></div>
+            <div className ="container"></div>
             <footer>
                 <div className= "columns">
                     <div className= "column">
@@ -26,8 +25,7 @@ function foot() {
                     </div>
                 </div>
             </footer>
-            </body>
-    
+        </body>  
     );
 }
 
