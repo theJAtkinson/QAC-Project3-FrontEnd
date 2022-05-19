@@ -54,6 +54,10 @@ export default class ContactUs extends React.Component {
             .then((response) => {
                 console.log(response);
                 this.setState({ requestStatus: "Email Sent Succesfully" })
+                this.setState({ fullName: "",
+                emailAddress: "",
+                title: "",
+                message: ""})
             })
             .catch((err) => {
                 err ? console.log(err) : console.log("-- Success --");

@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 
 function foot() {
     return (
-        <body>
+     
+            <div className="flex-wrapper">
         <div className ="container"></div>
         <footer>
             <div className= "columns">
@@ -25,12 +26,12 @@ function foot() {
             <li><a href="/classifications">Classifications</a></li>
             <li><a href="/discussionBoard">Discussion Board</a></li>
             <li><a href="/placesToGo">Places To Go</a></li>
-            <li><a href="#">Platinum badge </a></li>
+            <li><a href="#">Platinum badge</a></li>
             </ul>
             </div>
             </div>
         </footer>
-        </body>
+        </div>
         
 
 
